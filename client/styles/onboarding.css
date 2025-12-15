@@ -1,0 +1,205 @@
+/* onbording.css - Estilos Específicos para a Coleta de Dados do Usuário */
+
+/* ------------------------------------------------ */
+/* 1. LAYOUT BASE E CABEÇALHO */
+/* ------------------------------------------------ */
+
+.onboarding-container {
+    max-width: 500px;
+    width: 100%;
+    padding: 30px 20px;
+}
+
+.back-arrow {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    color: #ffffff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    z-index: 10;
+}
+
+.onboarding-header {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.onboarding-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    padding-top: 20px; 
+}
+
+.onboarding-subtitle {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #aaaaaa;
+}
+
+/* ------------------------------------------------ */
+/* 2. INPUTS ESPECÍFICOS (Peso, Altura e Data) */
+/* ------------------------------------------------ */
+
+.onboarding-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px; 
+}
+
+.input-row {
+    display: flex;
+    gap: 20px;
+}
+
+.input-row .input-group {
+    flex: 1; 
+}
+
+.input-with-unit {
+    display: flex;
+    align-items: center;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    padding-right: 12px;
+}
+
+.input-with-unit input {
+    background: none; 
+    border: none;
+    flex-grow: 1;
+    padding: 15px 12px;
+}
+
+.input-with-unit .unit {
+    color: #aaaaaa;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+/* ------------------------------------------------ */
+/* 3. OPÇÕES DE GÊNERO (Botões de Seleção) */
+/* ------------------------------------------------ */
+
+.gender-options {
+    display: flex;
+    flex-direction: column; 
+    gap: 15px;
+}
+
+.btn-option {
+    width: 100%;
+    padding: 15px;
+    background-color: #1a1a1a; 
+    color: #ffffff;
+    border: 1px solid #333333;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-option:hover {
+    border-color: #1e90ff; /* Azul ao passar o mouse */
+}
+
+/* Estilo ATIVO (AZUL VIBRANTE) */
+.active-blue { /* Renomeada a classe de 'active-green' para 'active-blue' */
+    background-color: #1e90ff; /* Azul forte */
+    color: #ffffff !important; /* Texto branco */
+    font-weight: 700;
+    border-color: #1e90ff;
+}
+
+/* ------------------------------------------------ */
+/* 4. BOTÃO DE AVANÇAR (AZUL Principal) */
+/* ------------------------------------------------ */
+
+.btn-next {
+    margin-top: 35px;
+    /* Usa o AZUL vibrante como primário */
+    background-color: #1e90ff; 
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.btn-next:hover {
+    background-color: #0d71d8;
+}
+
+.btn-next i {
+    margin-left: 10px;
+    font-size: 1.1rem;
+}
+
+/* ------------------------------------------------ */
+/* 5. RESPONSIVIDADE (Quebra de Coluna em Mobile) */
+/* ------------------------------------------------ */
+
+@media (max-width: 600px) {
+    .input-row {
+        flex-direction: column;
+    }
+}
+
+.select-container {
+    width: 100%;
+    color: #ffffff; /* Garante que o texto selecionado é branco */
+    background-color: transparent;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.select-container::after {
+    /* Adiciona a seta personalizada para o dropdown */
+    content: '\f078'; 
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    color: #aaaaaa;
+    pointer-events: none; /* Garante que o clique passe para o select */
+}
+
+.select-container select {
+    width: 100%;
+    padding: 15px 12px;
+    border: none;
+    font-size: 1rem;
+    color: #000000;
+    background-color: #ffffff; /* Usa o fundo do container */
+    -webkit-appearance: none; /* Remove seta padrão do Chrome/Safari */
+    -moz-appearance: none; /* Remove seta padrão do Firefox */
+    appearance: none; /* Remove seta padrão */
+    cursor: pointer;
+}
+
+.select-container select option {
+    /* Força as opções internas a terem fundo branco e texto preto (padrão de sistema) */
+    background: #000000; 
+    color: #ffffff;
+}
+
+/* Estilos para as opções de Nível */
+.nivel-options {
+    display: flex;
+    flex-direction: column; 
+    gap: 15px;
+}
+
+/* Para navegadores baseados em WebKit (Chrome, Safari) */
+.input-with-unit input::-webkit-outer-spin-button,
+.input-with-unit input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Para navegadores Firefox */
+.input-with-unit input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.input-with-unit input {
+    appearance: textfield;
+}

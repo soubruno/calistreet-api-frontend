@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calistreet - Qual seu Objetivo?</title>
+    <link rel="stylesheet" href="styles/styles.css"> 
+    <link rel="stylesheet" href="styles/onboarding.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="onboarding-container">
+        
+        <a href="perfil-onboarding-1.html" class="back-arrow"><i class="fas fa-arrow-left"></i></a>
+
+        <header class="onboarding-header">
+            <h1 class="onboarding-title">Qual seu objetivo?</h1>
+            <p class="onboarding-subtitle">Isso nos ajudará a criar um plano de treino personalizado para você.</p>
+        </header>
+
+        <main class="onboarding-form">
+            <form id="onboarding2Form"> 
+                
+                <div class="input-group">
+                    <label for="objetivo">Seu principal objetivo</label>
+                    <div class="select-container"> 
+                        <select id="objetivo" name="objetivo" class="input-required">
+                            <option value="" disabled selected>Selecione um objetivo</option>
+                            <option value="HIPERTROFIA">Ganhar massa muscular</option>
+                            <option value="PERDER_GORDURA">Perda de peso</option>
+                            <option value="RESISTENCIA">Resistência</option>
+                            <option value="MOBILIDADE">Mobilidade</option>
+                            <option value="FRONT_LEVER">Front Lever (Específico)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Seu nível de treino</label>
+                    <div class="nivel-options">
+                        <input type="hidden" id="nivelamento" name="nivelamento" class="input-required" value=""> 
+
+                        <button type="button" class="btn btn-option nivel-select" data-value="INICIANTE">Iniciante</button>
+                        <button type="button" class="btn btn-option nivel-select" data-value="INTERMEDIARIO">Intermediário</button>
+                        <button type="button" class="btn btn-option nivel-select" data-value="AVANCADO">Avançado</button>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-next" id="btn-onboarding-2">
+                    Avançar <i class="fas fa-arrow-right"></i>
+                </button>
+            </form>
+        </main>
+    </div>
+    
+    <script src="scripts/fetch-authenticated.js"></script>
+    <script src="scripts/onboarding-validation.js"></script>
+    <script src="scripts/selection.js"></script> 
+</body>
+</html>

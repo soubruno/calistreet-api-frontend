@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calistreet - Equipamentos</title>
+    <link rel="stylesheet" href="styles/styles.css"> 
+    <link rel="stylesheet" href="styles/onboarding.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="onboarding-container">
+        
+        <a href="perfil-onboarding-2.html" class="back-arrow"><i class="fas fa-arrow-left"></i></a>
+
+        <header class="onboarding-header">
+            <h1 class="onboarding-title">Onde você vai treinar?</h1>
+            <p class="onboarding-subtitle">Selecione os equipamentos que você tem acesso e o seu local de treino.</p>
+        </header>
+
+        <main class="onboarding-form">
+            <form id="onboarding3Form"> 
+            
+                <div class="input-group">
+                    <label>Local de treino</label>
+                    <div class="selection-grid location-grid" data-group="local">
+                        <input type="hidden" id="localTreino" name="localTreino" class="input-required" value=""> 
+
+                        <button type="button" class="btn btn-selection select-local" data-value="CASA">
+                            <i class="fas fa-home"></i> Em casa
+                        </button>
+                        <button type="button" class="btn btn-selection select-local" data-value="PRACA">
+                            <i class="fas fa-tree"></i> Praça
+                        </button>
+                        <button type="button" class="btn btn-selection select-local" data-value="ACADEMIA">
+                            <i class="fas fa-dumbbell"></i> Academia
+                        </button>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Equipamentos</label>
+                    <div class="selection-grid equipment-grid" data-group="equipamentos">
+                         <input type="hidden" id="equipamentos" name="equipamentos" class="input-required" value=""> 
+
+                        <button type="button" class="btn btn-selection select-equipment" data-value="ARGOLAS">
+                            <i class="fas fa-circle-notch"></i> Argolas
+                        </button>
+                        <button type="button" class="btn btn-selection select-equipment" data-value="BARRADEDOOR">
+                            <i class="fas fa-door-closed"></i> Barra de porta
+                        </button>
+                        <button type="button" class="btn btn-selection select-equipment" data-value="PARALELAS">
+                            <i class="fas fa-bars"></i> Paralelas
+                        </button>
+                        <button type="button" class="btn btn-selection select-equipment" data-value="ELASTICOS">
+                            <i class="fas fa-grip-lines-vertical"></i> Elásticos
+                        </button>
+                        <button type="button" class="btn btn-selection select-equipment" data-value="PESOS">
+                            <i class="fas fa-weight-hanging"></i> Pesos Livres
+                        </button>
+                        <button type="button" class="btn btn-selection select-equipment" data-value="NENHUM">
+                            <i class="fas fa-ban"></i> Nenhum
+                        </button>
+                    </div>
+                </div>
+            
+                <button type="submit" class="btn btn-primary btn-next" id="btn-finalizar-onboarding">
+                    Finalizar <i class="fas fa-arrow-right"></i>
+                </button>
+            </form>
+        </main>
+    </div>
+    
+    <script src="scripts/fetch-authenticated.js"></script>
+    <script src="scripts/onboarding-validation.js"></script>
+    <script src="scripts/selection.js"></script> 
+</body>
+</html>

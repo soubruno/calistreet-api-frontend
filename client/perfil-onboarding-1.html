@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calistreet - Sobre Você</title>
+    <link rel="stylesheet" href="styles/styles.css"> 
+    <link rel="stylesheet" href="styles/onboarding.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="onboarding-container">
+        
+        <a href="cadastro.html" class="back-arrow"><i class="fas fa-arrow-left"></i></a>
+
+        <header class="onboarding-header">
+            <h1 class="onboarding-title">Sobre você</h1>
+            <p class="onboarding-subtitle">Para criar um plano personalizado, precisamos de alguns detalhes.</p>
+        </header>
+
+        <main class="onboarding-form">
+            <form id="onboarding1Form"> 
+            
+                <div class="input-row">
+                    <div class="input-group">
+                        <label for="peso">Peso</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="peso" name="peso" placeholder="0" class="input-required">
+                            <span class="unit">kg</span>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="altura">Altura</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="altura" name="altura" placeholder="0" class="input-required">
+                            <span class="unit">cm</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="data-nasc">Data de Nascimento</label>
+                    <input type="date" id="data-nasc" name="dataNasc" placeholder="DD / MM / AAAA" class="input-required">
+                </div>
+
+                <div class="input-group">
+                    <label>Gênero</label>
+                    <div class="gender-options">
+                        <input type="hidden" id="genero" name="genero" class="input-required" value=""> 
+
+                        <button type="button" class="btn btn-option gender-select" data-value="MASCULINO">Masculino</button>
+                        <button type="button" class="btn btn-option gender-select" data-value="FEMININO">Feminino</button>
+                        <button type="button" class="btn btn-option gender-select" data-value="OUTRO">Não informar</button>
+                    </div>
+                </div>
+                
+                
+                <button type="submit" class="btn btn-primary btn-next" id="btn-onboarding-1">
+                    Avançar <i class="fas fa-arrow-right"></i>
+                </button>
+            </form>
+        </main>
+    </div>
+    <script src="scripts/fetch-authenticated.js"></script>
+    <script src="scripts/onboarding-validation.js"></script>
+    <script src="scripts/selection.js"></script>
+                
+</body>
+</html>
