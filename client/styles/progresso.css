@@ -1,0 +1,41 @@
+/* client/styles/progresso.css */
+
+/* ------------------------------------------------ */
+/* 1. INTRODUÇÃO DA PÁGINA */
+/* ------------------------------------------------ */
+.progresso-body {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 30px;
+    padding-bottom: 50px;
+}
+
+.page-intro {
+    text-align: left;
+    margin-bottom: 30px;
+    padding-top: 20px;
+    border-bottom: 1px solid #333333;
+    padding-bottom: 15px;
+}
+
+.intro-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.intro-subtitle {
+    font-size: 1rem;
+    color: #aaaaaa;
+}
+
+/* ------------------------------------------------ */
+/* 2. AJUSTES FINOS NOS CARDS (Reutilizando treinos-catalogo.css) */
+/* ------------------------------------------------ */
+
+/* Garante que o container de ações não tenha espaço para a lixeira */
+.treino-actions {
+    /* Mantém o display flex e align-items: center do treinos-catalogo.css */
+    justify-content: flex-end; /* Alinha o botão à direita */
+    gap: 0; 
+}

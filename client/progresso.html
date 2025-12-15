@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calistreet - Progresso</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/styles.css"> 
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="styles/treinos-catalogo.css"> <link rel="stylesheet" href="styles/progresso.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2 class="app-title">Calistreet</h2>
+            <button class="close-menu" id="close-menu"><i class="fas fa-times"></i></button>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li><a href="perfil.html"><i class="fas fa-user-circle"></i> Meu perfil</a></li>
+            <li><a href="meus-treinos.html"><i class="fas fa-dumbbell"></i> Treinos</a></li>
+            <li><a href="progresso.html"><i class="fas fa-chart-line"></i> Progresso</a></li>
+            <li><a href="exercicios-catalogo.html"><i class="fas fa-list-ul"></i> Exercícios</a></li>
+        </ul>
+    </nav>
+    
+    <div class="main-content" id="main-content">
+
+        <header class="dashboard-header">
+            <button class="menu-icon-static" id="menu-icon-static">
+                <i class="fas fa-bars"></i>
+            </button>
+            <h1 class="welcome-title">Progresso</h1> 
+            <div class="header-placeholder"></div> 
+        </header>
+
+        <main class="progresso-body">
+            
+            <section class="page-intro">
+                <h2 class="intro-title">Acompanhe o seu progresso</h2>
+                <p class="intro-subtitle">Histórico de treinos</p>
+                </section>
+
+            <section class="treinos-list" id="treinos-list">
+               
+            </section>
+
+        </main>
+        
+    </div> 
+    
+        <footer class="main-footer">
+            <div class="footer-content">
+                <div class="footer-branding">
+                    <p class="footer-app-title">Calistreet</p> </div>
+                
+                <div class="footer-links">
+                    <div class="contribution-text-group">
+                        <p class="contribution-text">Contribua para a melhoria do site</p>
+                        <a href="#">Contatos</a>
+                        <a href="#">Doações</a>
+                    </div>
+                </div>
+                
+                <div class="footer-social-group">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </footer>
+
+    <!-- <script src="scripts/fetch-authenticated.js"></script> -->
+    <script src="scripts/auth-guard.js"></script>
+    <script src="scripts/api-service.js"></script>
+    <script src="scripts/menu-toggle.js"></script> 
+    <script src="scripts/progresso.js"></script> 
+</body>
+</html>
