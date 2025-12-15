@@ -1,22 +1,17 @@
 /**
- * Redireciona para a tela de Criar/Atualizar Treino no modo de edição,
- * passando o ID do treino via URL query parameter.
- * @param {string} treinoId - O ID único do treino a ser visualizado/editado.
+ * Redireciona para a tela de Criar/Atualizar Treino no modo de edição.
  */
 function viewTreino(treinoId) {
     if (!treinoId) {
-        console.error("ID do treino não fornecido.");
+        console.error('ID do treino não informado.');
         return;
     }
 
-    console.log(`Visualizando treino ID: ${treinoId}`);
     window.location.href = `treino-form.html?id=${treinoId}`;
 }
 
 /**
  * Cria dinamicamente um card de treino.
- * @param {object} treino
- * @returns {HTMLElement}
  */
 function criarTreinoCard(treino) {
     const article = document.createElement('article');
@@ -35,13 +30,13 @@ function criarTreinoCard(treino) {
         </div>
 
         <div class="treino-actions">
-            <button 
-                class="btn btn-primary btn-small btn-editar"
+            <button
+                class="btn btn-primary btn-small"
                 onclick="viewTreino('${treino.id}')">
                 Editar
             </button>
 
-            <button 
+            <button
                 class="btn btn-icon btn-excluir"
                 onclick="excluirTreino('${treino.id}')">
                 <i class="fas fa-trash-alt"></i>
@@ -53,8 +48,7 @@ function criarTreinoCard(treino) {
 }
 
 /**
- * Renderiza a lista de treinos do usuário.
- * @param {Array} treinos
+ * Renderiza a lista de treinos.
  */
 function renderTreinos(treinos) {
     const lista = document.querySelector('.treinos-list');
@@ -63,7 +57,7 @@ function renderTreinos(treinos) {
     if (!treinos || treinos.length === 0) {
         lista.innerHTML = `
             <p style="color:#aaa; margin-top: 20px;">
-                Você ainda não criou nenhum treino.
+                Nenhum treino encontrado.
             </p>
         `;
         return;
@@ -75,8 +69,7 @@ function renderTreinos(treinos) {
 }
 
 /**
- * Exclui um treino do usuário.
- * @param {string} treinoId
+ * Exclui um treino.
  */
 async function excluirTreino(treinoId) {
     if (!confirm('Deseja realmente excluir este treino?')) return;
@@ -84,40 +77,46 @@ async function excluirTreino(treinoId) {
     try {
         await fetchAuthenticated(`/treinos/${treinoId}`, 'DELETE');
         alert('Treino excluído com sucesso!');
-        location.reload();
+        carregarMeusTreinos();
     } catch (error) {
         console.error('Erro ao excluir treino:', error);
-        alert('Erro ao excluir treino.');
+        alert(error.message || 'Erro ao excluir treino.');
     }
 }
 
 /**
- * Carregamento inicial da página "Meus Treinos"
+ * Lê os filtros da tela "Meus Treinos".
  */
-document.addEventListener('DOMContentLoaded', async () => {
-    // Segurança extra (auth-guard já faz isso, mas mantemos)
-    if (!localStorage.getItem('accessToken')) {
-        window.location.href = 'index.html';
-        return;
-    }
+function obterFiltrosMeusTreinos() {
+    const nome = document.getElementById('filterNome')?.value?.trim();
+    const nivel = document.getElementById('filterNivel')?.value;
+    const dataCriacao = document.getElementById('filterData')?.value;
 
-    console.log("Página Meus Treinos carregada.");
+    const filtros = {};
 
+    if (nome) filtros.nome = nome;
+    if (nivel) filtros.nivel = nivel;
+    if (dataCriacao) filtros.dataCriacao = dataCriacao;
+
+    return filtros;
+}
+
+/**
+ * Carrega os treinos do usuário aplicando filtros.
+ */
+async function carregarMeusTreinos() {
     try {
-        const response = await getMeusTreinos({ page: 1, limit: 10 });
+        const filtros = obterFiltrosMeusTreinos();
+        const queryString = new URLSearchParams(filtros).toString();
 
-        console.log("Treinos recebidos da API:", response);
+        const endpoint = queryString
+            ? `/treinos/meus?${queryString}`
+            : `/treinos/meus`;
 
-        // 🔥 Normalização da resposta
-        let treinos = [];
+        const response = await fetchAuthenticated(endpoint);
 
-        if (Array.isArray(response)) {
-            treinos = response;
-        } else if (response.data && Array.isArray(response.data)) {
-            treinos = response.data;
-        } else if (response.items && Array.isArray(response.items)) {
-            treinos = response.items;
-        }
+        // Backend retorna ARRAY direto
+        const treinos = Array.isArray(response) ? response : [];
 
         document.querySelector('.intro-title').textContent =
             `Meus Treinos (${treinos.length})`;
@@ -125,6 +124,29 @@ document.addEventListener('DOMContentLoaded', async () => {
         renderTreinos(treinos);
 
     } catch (error) {
-        console.error("Erro ao carregar os treinos:", error);
+        console.error('Erro ao carregar treinos:', error);
+        alert(error.message || 'Erro ao carregar treinos.');
     }
+}
+
+/**
+ * Inicialização da página.
+ */
+document.addEventListener('DOMContentLoaded', () => {
+    if (!localStorage.getItem('accessToken')) {
+        window.location.href = 'index.html';
+        return;
+    }
+
+    carregarMeusTreinos();
+
+    document
+        .getElementById('applyFilters')
+        ?.addEventListener('click', carregarMeusTreinos);
+
+    document
+        .getElementById('filterNome')
+        ?.addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') carregarMeusTreinos();
+        });
 });

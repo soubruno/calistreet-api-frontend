@@ -22,44 +22,93 @@
     color: #aaaaaa;
 }
 
+/* ------------------------------------------------ */
+/* 2. CONTROLES DE BUSCA E FILTRO */
+/* ------------------------------------------------ */
 .search-controls {
     display: flex;
-    gap: 10px;
+    flex-wrap: wrap;
+    gap: 12px;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    align-items: center;
 }
 
-.search-input {
-    flex-grow: 1;
-    padding: 12px;
+/* Inputs base */
+.search-input,
+.search-select,
+.search-date {
+    padding: 12px 14px;
     border: 1px solid #333333;
     border-radius: 8px;
     background-color: #1a1a1a;
     color: #ffffff;
-    font-size: 1rem;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
 }
 
+/* Campo texto (nome do treino) */
+.search-input {
+    flex: 1 1 240px;
+}
+
+/* Campo data */
+.search-date {
+    flex: 0 0 180px;
+}
+
+/* Select (nível, etc.) */
+.search-select {
+    flex: 0 0 180px;
+    cursor: pointer;
+}
+
+/* Placeholder */
 .search-input::placeholder {
     color: #888888;
 }
 
+/* Focus */
+.search-input:focus,
+.search-select:focus,
+.search-date:focus {
+    border-color: #1e90ff;
+    box-shadow: 0 0 0 2px rgba(30, 144, 255, 0.2);
+    background-color: #191919;
+}
+
+/* ------------------------------------------------ */
+/* BOTÃO APLICAR FILTROS */
+/* ------------------------------------------------ */
 .btn-filter {
-    width: 45px;
-    height: 45px;
+    width: 46px;
+    height: 46px;
     border-radius: 8px;
     background-color: #1e90ff;
-    color: white;
+    color: #ffffff;
     font-size: 1.1rem;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+    transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
 }
 
+.btn-filter:hover {
+    background-color: #187bdb;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.35);
+}
+
+.btn-filter:active {
+    transform: scale(0.96);
+}
 
 /* ------------------------------------------------ */
-/* 2. LISTA DE TREINOS (CARDS) */
+/* 3. LISTA DE TREINOS (CARDS) */
 /* ------------------------------------------------ */
 .treinos-list {
     display: flex;
@@ -67,29 +116,30 @@
     gap: 20px;
 }
 
+/* Card */
 .treino-card {
     display: flex;
     align-items: center;
     background-color: #1a1a1a;
-    padding: 15px;
+    padding: 16px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    transition: transform 0.2s;
-    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .treino-card:hover {
     transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
 }
 
-/* Icone/Foto do Treino (Lado Esquerdo) */
+/* Ícone do treino */
 .treino-icon {
     width: 50px;
     height: 50px;
     background-color: #000000;
-    color: #1e90ff; 
+    color: #1e90ff;
     border-radius: 8px;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -97,17 +147,20 @@
     flex-shrink: 0;
 }
 
-/* Informações do Treino */
+/* Informações */
 .treino-info {
     flex-grow: 1;
-    min-width: 0; /* Permite que o texto seja truncado se necessário */
+    min-width: 0;
 }
 
 .treino-nome {
     font-size: 1.1rem;
     font-weight: 600;
-    margin-bottom: 2px;
+    margin-bottom: 3px;
     color: #f0f0f0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .treino-meta {
@@ -116,60 +169,86 @@
 }
 
 /* ------------------------------------------------ */
-/* 3. AÇÕES (Visualizar e Excluir) */
+/* 4. AÇÕES (EDITAR / EXCLUIR) */
 /* ------------------------------------------------ */
 .treino-actions {
     display: flex;
     align-items: center;
     gap: 10px;
     flex-shrink: 0;
-    line-height: 1;
 }
 
-.btn-visualizar {
-    /* Botão Primário (Azul) para Visualizar */
+/* Botão editar (reutiliza padrão global btn-primary) */
+.btn-editar {
     padding: 8px 15px;
     font-size: 0.9rem;
     height: 38px;
     margin: 0;
 }
 
+/* Botão ícone (excluir) */
 .btn-icon {
     background: none;
     border: none;
-    color: #ff4444; /* Vermelho para Excluir (Lixeira) */
+    color: #ff4d4d;
     font-size: 1.1rem;
     padding: 10px;
     cursor: pointer;
-    transition: color 0.2s;
-    width: 38px; 
+    transition: color 0.2s, transform 0.1s;
+    width: 38px;
     height: 38px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0;
 }
 
 .btn-excluir:hover {
     color: #d83a3a;
 }
 
+.btn-icon:active {
+    transform: scale(0.9);
+}
 
-/* RESPONSIVIDADE */
+/* ------------------------------------------------ */
+/* 5. RESPONSIVIDADE */
+/* ------------------------------------------------ */
+@media (max-width: 768px) {
+    .search-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-input,
+    .search-select,
+    .search-date {
+        width: 100%;
+        flex: 1 1 auto;
+    }
+
+    .btn-filter {
+        width: 100%;
+        height: 44px;
+        font-size: 1rem;
+    }
+}
+
 @media (max-width: 550px) {
-    /* Em telas muito pequenas, o botão visualizar pode ser substituído por um ícone */
-    .btn-visualizar {
-        font-size: 0; /* Oculta o texto */
-        width: 40px; 
-        height: 40px; 
+    /* Botão editar vira apenas ícone */
+    .btn-editar {
+        font-size: 0;
+        width: 40px;
+        height: 40px;
         padding: 0;
         border-radius: 50%;
+        position: relative;
     }
-    .btn-visualizar::after {
-        /* Exibe apenas um ícone de olho */
-        content: '\f06e'; 
+
+    .btn-editar::after {
+        content: '\f044';
         font-family: 'Font Awesome 5 Free';
         font-weight: 900;
-        font-size: 0.9rem;
+        font-size: 0.95rem;
+        color: #ffffff;
     }
 }

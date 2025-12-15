@@ -6,6 +6,7 @@ import { CreateTreinoDto, TreinoItemDto } from './dto/create-treino.dto';
 import { Exercicio } from '../exercicio/entity';
 import { Usuario } from '../usuario/entity';
 import { FindAllTreinosDto } from './dto/find-all-treinos.dto';
+import { Op } from 'sequelize';
 
 @Injectable()
 export class TreinoRepository {
@@ -90,18 +91,43 @@ export class TreinoRepository {
     });
   }
 
-  /** 👤 Treinos do usuário logado */
-  async findMeusTreinos(usuarioId: string): Promise<Treino[]> {
+  /** 👤 Treinos do usuário logado (com filtros) */
+  async findMeusTreinos(
+    usuarioId: string,
+    query: FindAllTreinosDto,
+  ): Promise<Treino[]> {
+
+    const where: any = {
+      criadoPorId: usuarioId,
+      isTemplate: false,
+    };
+
+    if (query.nome) {
+      where.nome = {
+        [Op.iLike]: `%${query.nome}%`,
+      };
+    }
+
+    if (query.nivel) {
+      where.nivel = query.nivel;
+    }
+
+    if (query.dataCriacao) {
+      const inicioDia = new Date(`${query.dataCriacao}T00:00:00.000Z`);
+      const fimDia = new Date(`${query.dataCriacao}T23:59:59.999Z`);
+
+      where.createdAt = {
+        [Op.between]: [inicioDia, fimDia],
+      };
+    }
+
     return this.treinoModel.findAll({
-      where: {
-        criadoPorId: usuarioId,
-        isTemplate: false,
-      },
+      where,
       include: [
         {
           model: TreinoExercicio,
           as: 'itens',
-          separate: true,          // 🔥 OBRIGATÓRIO
+          separate: true,
           order: [['ordem', 'ASC']],
         },
       ],

@@ -58,12 +58,15 @@ export class TreinoController {
     return this.treinoService.findCatalogo(query);
   }
 
-  /** 👤 MEUS TREINOS (apenas do usuário logado) */
+  /** 👤 MEUS TREINOS (com filtros) */
   @Get('meus')
   @UseGuards(AuthGuard('jwt'))
   @ApiOperation({ summary: 'Lista os treinos criados pelo usuário logado.' })
-  async findMeusTreinos(@Req() req: any) {
-    return this.treinoService.findMeusTreinos(req.user.id);
+  async findMeusTreinos(
+    @Req() req: any,
+    @Query() query: FindAllTreinosDto,
+  ) {
+    return this.treinoService.findMeusTreinos(req.user.id, query);
   }
 
   /** 🔍 Visualizar treino específico */

@@ -41,16 +41,34 @@
                 <h2 class="intro-title">Meus Treinos</h2>
                 <p class="intro-subtitle">Atualize e/ou remova exercícios.</p>
                 <div class="search-controls">
-                    <input type="text" id="searchInput" placeholder="Buscar treino por nome ou nível..." class="search-input">
-                    <button class="btn btn-icon btn-filter"><i class="fas fa-filter"></i></button>
+                    <input
+                        type="text"
+                        id="filterNome"
+                        class="search-input"
+                        placeholder="Buscar por nome do treino..."
+                    />
+
+                    <select id="filterNivel" class="search-select">
+                        <option value="">Todos os níveis</option>
+                        <option value="INICIANTE">Iniciante</option>
+                        <option value="INTERMEDIARIO">Intermediário</option>
+                        <option value="AVANCADO">Avançado</option>
+                    </select>
+
+                    <input
+                        type="date"
+                        id="filterData"
+                        class="search-date"
+                    />
+
+                    <button id="applyFilters" class="btn btn-icon btn-filter">
+                        <i class="fas fa-filter"></i>
+                    </button>
                 </div>
             </section>
 
             <section class="treinos-list">
-
-                
-                
-                </section>
+            </section>
 
         </main>
         

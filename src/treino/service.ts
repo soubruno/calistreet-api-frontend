@@ -6,6 +6,7 @@ import { ExercicioService } from '../exercicio/service';
 import { Treino } from './entity';
 import { UsuarioService } from '../usuario/service';
 import { TipoUsuario } from '../common/enums/tipo-usuario.enum';
+import { FindAllTreinosDto } from './dto/find-all-treinos.dto';
 
 @Injectable()
 export class TreinoService {
@@ -75,8 +76,11 @@ export class TreinoService {
   }
 
   /** 👤 Treinos do usuário logado */
-  async findMeusTreinos(usuarioId: string) {
-    return this.treinoRepository.findMeusTreinos(usuarioId);
+  async findMeusTreinos(
+    usuarioId: string,
+    query: FindAllTreinosDto,
+  ): Promise<Treino[]> {
+    return this.treinoRepository.findMeusTreinos(usuarioId, query);
   }
 
   // =====================================================
