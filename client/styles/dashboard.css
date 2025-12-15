@@ -1,0 +1,316 @@
+/* client/styles/dashboard.css - TRADUÇÃO DO FIGMA CSS */
+
+/* ------------------------------------------------ */
+/* 1. LAYOUT GERAL E FUNDO (DO #FFFFFF e #0F0F10) */
+/* ------------------------------------------------ */
+body {
+    /* Fundo da tela de design: #0F0F10 (Rectangle 1) */
+    background-color: #0F0F10; 
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex; 
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+.main-content {
+    /* Garante que o main-content ocupe todo o espaço restante */
+    flex-grow: 1; 
+    width: 100%;
+    
+    /* Remove a margem automática se houver */
+    margin: 0; 
+    
+    /* Mantém o padding para o conteúdo interno */
+    padding: 0 2px;
+}
+
+/* ------------------------------------------------ */
+/* 2. HEADER (Tela de Login - Fundo #000000) */
+/* ------------------------------------------------ */
+.dashboard-header {
+    background-color: #000000; 
+    height: 101px;
+    width: 100%; 
+    position: sticky;
+    top: 0;
+    z-index: 50; 
+    /* Adicionamos o padding do main-content ao header para alinhar o conteúdo interno */
+    padding: 0 30px; 
+}
+
+/* Move o header para cobrir toda a largura da viewport, e não apenas o main-content */
+body > .main-content {
+    /* Ajusta o padding para que o conteúdo não fique debaixo do header */
+    padding-top: 101px; 
+    margin-top: -101px; 
+}
+
+
+/* Título: Bem vindo, usuário! */
+.welcome-title {
+    font-size: 2.2rem;
+    flex-grow: 1;
+    text-align: center;
+    padding-top: 20px;
+}
+
+/* Menu (Hamburguer) */
+.menu-icon-static {
+    /* Simula Menu (position: absolute; left: 10px; top: 12px;) */
+    background: none;
+    border: none;
+    color: #FFFFFF;
+    font-size: 2.2rem; /* 80px de altura */
+    cursor: pointer;
+    /* Garante que ele fique no canto esquerdo */
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10px;
+}
+.header-placeholder {
+    /* Placeholder no lado direito para manter o título centralizado */
+    width: 80px; 
+}
+
+/* ------------------------------------------------ */
+/* MENU LATERAL (OVERLAY) */
+/* ------------------------------------------------ */
+.sidebar {
+    width: 100%;
+    max-width: 300px; /* Largura máxima do menu */
+    height: 100vh;
+    background-color: #0F0F10; /* Fundo do menu (Pode ser #000000 ou #0F0F10) */
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 30px 20px;
+    transform: translateX(-100%); /* Esconde fora da tela */
+    visibility: hidden;
+    transition: transform 0.3s ease-in-out;
+    z-index: 2000; /* Garante que fique acima de tudo */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar.active {
+    transform: translateX(0); /* Mostra o menu */
+    visibility: visible;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #333;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    /* Estilos das estrelas */
+}
+
+.sidebar-menu li a {
+    display: block;
+    padding: 15px 10px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.2s;
+    background: none;
+    border-radius: 4px;
+}
+
+.sidebar-menu li a:hover {
+    background-color: #1a1a1a;
+    color: #1e90ff;
+}
+
+.sidebar-menu li a i {
+    margin-right: 15px;
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+}
+
+.close-menu {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Ocultar o scrollbar do corpo quando o menu estiver aberto (UX) */
+body.menu-open {
+    overflow: hidden;
+}
+
+/* ------------------------------------------------ */
+/* 3. CORPO (Cards) */
+/* ------------------------------------------------ */
+.dashboard-body-container {
+    padding: 50px 0; /* Espaçamento interno */
+}
+
+.dashboard-cards {
+    /* Layout em colunas para desktop */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+    padding-left: 20px;
+}
+
+.card-option {
+    /* Efeito flutuante e moderno */
+    background-color: #1a1a1a;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+    border-radius: 12px;
+    padding: 20px;
+    min-height: 120px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.card-option:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
+}
+
+.card-icon {
+    width: 65px;
+    height: 65px;
+    font-size: 2.2rem;
+    background-color: #000000;
+    color: #1e90ff; 
+    border-radius: 10px; 
+    margin-right: 20px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ------------------------------------------------ */
+/* 4. FOOTER (Fundo #000000, Top: 908px) */
+/* ------------------------------------------------ */
+.main-footer {
+    /* Simula a posição fixa na parte inferior */
+    width: 100%;
+    background-color: #000000;
+    border-top: 1px solid #FFFFFF; /* Borda branca, conforme Figma */
+    margin-top: 0; 
+    padding: 32px 40px; 
+    flex-shrink: 0;
+}
+
+.footer-content {
+    /* Layout automático (Figma) - Centralizado e Responsivo */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Calistreet (Title - Font Fredoka One, 48px) */
+.footer-app-title {
+    font-family: 'Fredoka One', sans-serif;
+    font-size: 3rem; /* 48px */
+    font-weight: 400;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    flex-basis: 100%; /* Ocupa toda a linha em mobile */
+    text-align: center;
+}
+
+.contribution-text-group {
+    /* Contatos e Doações */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.contribution-text {
+    font-weight: 600;
+    font-size: 1rem; /* Body Strong */
+    color: #FFFFFF;
+    margin-bottom: 5px;
+}
+
+.contribution-text-group a {
+    /* Contatos/Doações (Body Base) */
+    font-weight: 400;
+    font-size: 1rem;
+    color: #FFFFFF;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+/* Redes Sociais */
+.footer-social-group {
+    display: flex;
+    gap: 16px; /* 16px de gap, conforme Figma */
+    margin-top: 10px;
+}
+
+.footer-social-group i {
+    font-size: 1.5rem; /* Icones de 24px */
+    color: #FFFFFF;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+    .dashboard-header {
+        height: 80px;
+    }
+    .welcome-title {
+        font-size: 1.5rem;
+    }
+    .menu-icon-static {
+        font-size: 1.5rem;
+    }
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .contribution-text-group {
+        align-items: center;
+        margin-bottom: 30px;
+    }
+    .footer-app-title {
+        font-size: 2.5rem;
+    }
+}
+
+@media (min-width: 769px) {
+    /* Desktop */
+    .welcome-title {
+        margin-left: 0;
+    }
+    .dashboard-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        /* Diminui o padding lateral em mobile */
+        padding: 0 15px 15px 15px; 
+    }
+}

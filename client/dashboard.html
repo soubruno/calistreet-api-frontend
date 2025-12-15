@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calistreet - Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/styles.css"> 
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2 class="app-title">Calistreet</h2>
+            <button class="close-menu" id="close-menu"><i class="fas fa-times"></i></button>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li><a href="perfil.html"><i class="fas fa-user-circle"></i> Meu perfil</a></li>
+            <li><a href="meus-treinos.html"><i class="fas fa-dumbbell"></i> Treinos</a></li>
+            <li><a href="progresso.html"><i class="fas fa-chart-line"></i> Progresso</a></li>
+            <li><a href="exercicios-catalogo.html"><i class="fas fa-list-ul"></i> Exercícios</a></li>
+        </ul>
+    </nav>
+    
+    <div class="main-content" id="main-content">
+
+        <header class="dashboard-header">
+            <button class="menu-icon-static" id="menu-icon-static">
+                <i class="fas fa-bars"></i>
+            </button>
+            <h1 class="welcome-title">Bem vindo, Usuário Calistreet!</h1> 
+            
+            <div class="header-placeholder"></div> 
+        </header>
+
+        <main class="dashboard-body-container">
+            
+            <section class="dashboard-cards">
+                <article class="card-option treino-do-dia" data-dia="segunda quarta" style="display: none;">
+                    <div class="card-icon"><i class="fas fa-calendar-day"></i></div> 
+                    <div class="card-details">
+                        <h3>Treino do dia</h3>
+                        <p>Treino de Costas (Segunda e Quarta)</p>
+                        <button class="btn btn-primary btn-small">Iniciar</button>
+                    </div>
+                </article>
+
+                <article class="card-option">
+                    <div class="card-icon"><i class="fas fa-plus-circle"></i></div> 
+                    <div class="card-details">
+                        <h3>Crie um treino</h3>
+                        <p>Monte um treino personalizado.</p>
+                        <button class="btn btn-primary btn-small" onclick="window.location.href='treino-form.html?novo=true'">Criar</button>
+                    </div>
+                </article>
+                
+                <article class="card-option">
+                    <div class="card-icon"><i class="fas fa-list-alt"></i></div> 
+                    <div class="card-details">
+                        <h3>Meus treinos</h3>
+                        <p>Gerencie os seus treinos.</p>
+                        <button class="btn btn-primary btn-small" onclick="window.location.href='meus-treinos.html'">Visualizar</button>
+                    </div>
+                </article>
+            </section>
+
+        </main>
+    </div>
+    
+        
+        <footer class="main-footer">
+            <div class="footer-content">
+                <div class="footer-branding">
+                    <p class="footer-app-title">Calistreet</p> </div>
+                
+                <div class="footer-links">
+                    <div class="contribution-text-group">
+                        <p class="contribution-text">Contribua para a melhoria do site</p>
+                        <a href="#">Contatos</a>
+                        <a href="#">Doações</a>
+                    </div>
+                </div>
+                
+                <div class="footer-social-group">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </footer>
+        
+    
+    <script src="scripts/api-service.js"></script>     
+    <!-- <script src="scripts/fetch-authenticated.js"></script> -->
+    <script src="scripts/auth-guard.js"></script>
+    <script src="scripts/menu-toggle.js"></script>
+    <script src="scripts/dashboard.js"></script>
+</body>
+</html>
