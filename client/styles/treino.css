@@ -1,0 +1,229 @@
+/* client/styles/treino.css */
+
+/* ------------------------------------------------ */
+/* 1. LAYOUT DO PLAYER */
+/* ------------------------------------------------ */
+.player-body {
+    padding-top: 20px;
+    padding-bottom: 50px;
+}
+
+/* ------------------------------------------------ */
+/* 2. CRONÔMETRO E CONTROLES */
+/* ------------------------------------------------ */
+.progress-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 40px;
+    background-color: #1a1a1a;
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.timer-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#timer-display {
+    font-family: 'Fredoka One', sans-serif;
+    font-size: 3.5rem;
+    color: #1e90ff; /* Azul vibrante */
+    letter-spacing: 0.05em;
+}
+
+.control-buttons {
+    display: flex;
+    gap: 25px;
+}
+
+.btn-control {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    transition: all 0.2s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Estilo para o Botão PLAY/PAUSE */
+.btn-play {
+    background-color: #1e90ff; /* Azul primário */
+    color: white;
+}
+.btn-play:hover {
+    background-color: #0d71d8;
+}
+
+/* Estilo para o Botão STOP */
+.btn-stop {
+    background-color: #ff4444; /* Vermelho para STOP */
+    color: white;
+}
+.btn-stop:hover {
+    background-color: #d83a3a;
+}
+
+/* ------------------------------------------------ */
+/* 3. BARRA DE PROGRESSO */
+/* ------------------------------------------------ */
+.progress-bar-container {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.progress-bar-bg {
+    width: 100%;
+    height: 10px;
+    background-color: #333333;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background-color: #1e90ff;
+    transition: width 0.3s ease-in-out;
+}
+
+#progress-percent {
+    font-weight: 600;
+    color: #1e90ff;
+}
+
+/* ------------------------------------------------ */
+/* 4. LISTA E DETALHES DE EXERCÍCIOS */
+/* ------------------------------------------------ */
+.exercise-list h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #333333;
+    padding-bottom: 10px;
+}
+
+.exercise-item {
+    margin-bottom: 10px;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    padding: 10px 15px;
+    border: 1px solid #333333;
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item-info {
+    flex-grow: 1;
+    margin-right: 15px;
+}
+
+.exercise-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #f0f0f0;
+}
+
+.exercise-meta {
+    font-size: 0.85rem;
+    color: #aaaaaa;
+    margin-top: 2px;
+}
+
+.item-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Checkbox estilizado */
+.exercise-checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    /* Estilos customizados para tema escuro */
+    appearance: none;
+    background-color: #333333;
+    border: 2px solid #555555;
+    border-radius: 4px;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.exercise-checkbox:checked {
+    background-color: #1e90ff;
+    border-color: #1e90ff;
+}
+
+.exercise-checkbox:checked::after {
+    content: '\f00c'; /* Ícone de check do Font Awesome */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: white;
+    font-size: 0.8rem;
+    display: block;
+    text-align: center;
+    line-height: 16px;
+}
+
+.exercise-item-edit.dragging {
+    opacity: 0.5;
+}
+
+.exercise-item-edit {
+    transition: transform 0.15s ease;
+}
+
+
+/* Detalhes Expansíveis */
+.item-details {
+    padding-top: 10px;
+    border-top: 1px solid #333333;
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+.item-details.hidden {
+    display: none;
+}
+
+.btn-toggle-details {
+    background: none;
+    border: none;
+    color: #1e90ff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.btn-toggle-details.rotated {
+    transform: rotate(180deg);
+}
+
+/* ------------------------------------------------ */
+/* 5. RESPONSIVIDADE */
+/* ------------------------------------------------ */
+@media (max-width: 450px) {
+    #timer-display {
+        font-size: 2.8rem;
+    }
+    .btn-control {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+}

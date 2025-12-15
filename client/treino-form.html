@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calistreet - Treino</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/styles.css"> 
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="styles/treino-form.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2 class="app-title">Calistreet</h2>
+            <button class="close-menu" id="close-menu"><i class="fas fa-times"></i></button>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li><a href="perfil.html"><i class="fas fa-user-circle"></i> Meu perfil</a></li>
+            <li><a href="meus-treinos.html"><i class="fas fa-dumbbell"></i> Treinos</a></li>
+            <li><a href="progresso.html"><i class="fas fa-chart-line"></i> Progresso</a></li>
+            <li><a href="exercicios-catalogo.html"><i class="fas fa-list-ul"></i> Exercícios</a></li>
+        </ul>
+    </nav>
+    
+    <div class="main-content" id="main-content">
+
+        <header class="dashboard-header">
+            <button class="menu-icon-static" id="menu-icon-static">
+                <i class="fas fa-bars"></i>
+            </button>
+            <h1 class="welcome-title" id="tituloTreino">Novo Treino</h1> 
+            <div class="header-placeholder"></div> 
+        </header>
+
+        <main class="treino-form-body">
+            <form id="treinoForm">
+                
+                <section class="form-section">
+                    <div class="input-group">
+                        <label for="nomeTreino">Nome do Treino</label>
+                        <input type="text" id="nomeTreino" placeholder="Ex: Treino de Força (ABC)" class="input-required">
+                    </div>
+                </section>
+
+                <section class="form-section">
+                    <div class="input-group">
+                        <label for="descricaoTreino">Descrição (Opcional)</label>
+                        <textarea id="descricaoTreino" placeholder="Detalhes da rotina ou foco."></textarea>
+                    </div>
+                </section>
+                
+                <section class="form-section">
+                <div class="split-row"> 
+                    <div class="input-group">
+                        <label for="nivel">Nível de Dificuldade</label>
+                        <div class="select-container"> 
+                            <select id="nivel" name="nivel" class="input-required">
+                                <option value="" disabled selected>Selecione o nível</option>
+                                <option value="INICIANTE">Iniciante</option>
+                                <option value="INTERMEDIARIO">Intermediário</option>
+                                <option value="AVANCADO">Avançado</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="descanso">Descanso Padrão entre Séries</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="descanso" placeholder="60" class="input-required" min="30">
+                            <span class="unit">segundos</span>
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="input-group">
+                        <label>Dias Agendados</label>
+                        <div class="day-selection-grid" id="diasAgendadosContainer">
+                            <button type="button" class="btn btn-day" data-day="segunda">SEG</button>
+                            <button type="button" class="btn btn-day" data-day="terca">TER</button>
+                            <button type="button" class="btn btn-day" data-day="quarta">QUA</button>
+                            <button type="button" class="btn btn-day" data-day="quinta">QUI</button>
+                            <button type="button" class="btn btn-day" data-day="sexta">SEX</button>
+                            <button type="button" class="btn btn-day" data-day="sabado">SAB</button>
+                            <button type="button" class="btn btn-day" data-day="domingo">DOM</button>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="form-section exercise-builder">
+                    <h2>Exercícios no Treino</h2>
+
+                    <div id="exercise-list-container">
+                        <!-- Exercícios adicionados dinamicamente -->
+                    </div>
+
+                    <button type="button" id="btnAddExercise" class="btn btn-primary btn-add-exercise">
+                        <i class="fas fa-plus"></i> Adicionar Exercício
+                    </button>
+                </section>
+                
+                <button type="submit" class="btn btn-primary btn-save-treino">
+                    Salvar Treino
+                </button>
+            </form>
+        </main>
+        
+    </div> 
+    
+    <!-- <script src="scripts/fetch-authenticated.js"></script> -->
+    <script src="scripts/auth-guard.js"></script>
+    <script src="scripts/api-service.js"></script>
+    <script src="scripts/menu-toggle.js"></script>
+    <script src="scripts/treino-form.js"></script> 
+</body>
+</html>

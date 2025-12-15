@@ -1,0 +1,263 @@
+/* client/styles/treino-form.css */
+
+.treino-form-body {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 30px;
+    padding-bottom: 50px;
+}
+
+.form-section {
+    margin-bottom: 40px;
+}
+
+.form-section h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #f0f0f0;
+}
+
+/* ------------------------------------------------ */
+/* Inputs (Nome e Descanso) */
+/* ------------------------------------------------ */
+.input-group {
+    margin-bottom: 25px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #f0f0f0;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: #1a1a1a;
+}
+
+/* Aplica o mesmo estilo de input ao textarea */
+.input-group textarea {
+    width: 100%;
+    padding: 15px 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: #1a1a1a;
+    resize: vertical; /* Permite redimensionar apenas verticalmente */
+    min-height: 100px; /* Garante que a descrição tenha um tamanho mínimo */
+}
+
+/* Input com Unidade (Descanso) */
+.input-with-unit {
+    display: flex;
+    align-items: center;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    padding-right: 12px;
+    max-width: 300px;
+}
+
+.input-with-unit input {
+    background: none;
+    flex-grow: 1;
+}
+
+.input-with-unit .unit {
+    color: #aaaaaa;
+    font-weight: 600;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+/* ------------------------------------------------ */
+/* Seleção de Dias Agendados (Corrigindo o Grid) */
+/* ------------------------------------------------ */
+.day-selection-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); 
+    gap: 10px; /* Espaço entre os botões */
+    margin-top: 10px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* ------------------------------------------------ */
+/* Select de Nível de Dificuldade (Ajuste Visual) */
+/* ------------------------------------------------ */
+.input-group select {
+    width: 100%;
+    padding: 15px 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: #1a1a1a;
+    /* Remove a aparência nativa do select para estilização uniforme */
+    appearance: none; 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /* Adiciona um ícone de seta customizado (opcional, mas melhora a UX) */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23AAAAAA' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+}
+
+/* Contêiner de input-group para SELECT, se você quiser mais controle sobre a seta */
+.select-container {
+    position: relative;
+}
+
+/* ------------------------------------------------ */
+/* Lista de Exercícios Editável */
+/* ------------------------------------------------ */
+#exercise-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.exercise-item-edit {
+    display: flex;
+    align-items: flex-start;
+    background-color: #1a1a1a;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #333333;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    cursor: grab; /* Indica que o item é arrastável (para ordenação) */
+}
+
+/* Ícone de Arrastar (Mudar Ordem) */
+.item-drag-handle {
+    color: #aaaaaa;
+    font-size: 1.2rem;
+    margin-right: 15px;
+    cursor: grab;
+}
+
+.item-info-edit {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.exercise-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.exercise-details {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+    color: #aaaaaa;
+}
+
+.rep-label {
+    font-weight: 600;
+    color: #f0f0f0;
+    margin-left: 10px;
+}
+
+/* Input de Repetições/Séries Pequeno */
+.rep-input {
+    width: 40px; /* Largura fixa pequena */
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #555555;
+    border-radius: 4px;
+    background-color: #000000; /* Fundo preto puro */
+    color: #ffffff;
+    font-size: 0.9rem;
+    /* Remove setas de incremento/decremento (já configurado no styles.css) */
+}
+
+
+/* Ações (Visualizar e Remover) */
+.item-actions {
+    display: flex;
+    gap: 5px;
+    flex-shrink: 0;
+    margin-left: 15px;
+}
+
+.btn-view-details {
+    color: #1e90ff; /* Azul para visualizar */
+}
+
+.btn-remove {
+    color: #ff4444; /* Vermelho para remover */
+}
+
+/* Botão Adicionar Exercício */
+.btn-add-exercise {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Layout 50/50 para campos */
+.split-row {
+    display: flex;
+    position: relative;
+    gap: 20px; /* Espaço entre os dois campos */
+    margin-bottom: 25px;
+    z-index: 1;
+}
+
+.split-row .input-group {
+    flex: 1; /* Garante que os dois inputs tenham 50% da largura */
+    margin-bottom: 0; /* Remove margem dupla */
+}
+
+/* Garante que o input-with-unit use 100% do seu 50% */
+.split-row .input-with-unit {
+    max-width: none; 
+}
+
+/* Estilo para os botões de dia (Requer classes no styles.css ou aqui) */
+.btn-day {
+    padding: 10px 5px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    border-radius: 6px;
+    background-color: #333333;
+    color: #f0f0f0;
+    border: 1px solid #555555;
+    transition: background-color 0.2s, border-color 0.2s;
+    cursor: pointer;
+}
+
+.btn-day * {
+    pointer-events: none; 
+}
+
+.btn-day.selected {
+    background-color: #1e90ff; /* Azul da sua paleta */
+    border-color: #1e90ff;
+    color: #ffffff;
+}
+.day-selection-grid .btn-day.selected { 
+    background-color: #1e90ff;
+    border-color: #1e90ff;
+    color: #ffffff;
+    box-shadow: 0 0 5px rgba(30, 144, 255, 0.5);
+}

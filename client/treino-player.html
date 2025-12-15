@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calistreet - Treino Player</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/styles.css"> 
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="styles/treino.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+<nav class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <h2 class="app-title">Calistreet</h2>
+        <button class="close-menu" id="close-menu"><i class="fas fa-times"></i></button>
+    </div>
+    <ul class="sidebar-menu">
+        <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+        <li><a href="perfil.html"><i class="fas fa-user-circle"></i> Meu perfil</a></li>
+        <li><a href="meus-treinos.html"><i class="fas fa-dumbbell"></i> Treinos</a></li>
+        <li><a href="progresso.html"><i class="fas fa-chart-line"></i> Progresso</a></li>
+        <li><a href="exercicios-catalogo.html"><i class="fas fa-list-ul"></i> Exercícios</a></li>
+    </ul>
+</nav>
+
+<div class="main-content" id="main-content">
+
+    <header class="dashboard-header">
+        <button class="menu-icon-static" id="menu-icon-static">
+            <i class="fas fa-bars"></i>
+        </button>
+        <h1 class="welcome-title">Treino</h1> 
+        <div class="header-placeholder"></div> 
+    </header>
+
+    <main class="player-body">
+
+        <section class="progress-section">
+            <div class="timer-controls">
+                <h2 id="timer-display">00:00:00</h2>
+                <div class="control-buttons">
+                    <button id="play-pause-btn" class="btn btn-control btn-play">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button id="stop-btn" class="btn btn-control btn-stop hidden">
+                        <i class="fas fa-stop"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="progress-bar-container">
+                <p>Progresso do Treino: <span id="progress-percent">0%</span></p>
+                <div class="progress-bar-bg">
+                    <div id="progress-bar-fill" class="progress-bar-fill" style="width: 0%;"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="exercise-list">
+            <h2>Exercícios</h2>
+            <!-- Exercícios serão inseridos dinamicamente via JS -->
+        </section>
+
+    </main>
+
+</div> 
+
+<footer class="main-footer">
+    <div class="footer-content">
+        <div class="footer-branding">
+            <p class="footer-app-title">Calistreet</p> 
+        </div>
+        <div class="footer-links">
+            <div class="contribution-text-group">
+                <p class="contribution-text">Contribua para a melhoria do site</p>
+                <a href="#">Contatos</a>
+                <a href="#">Doações</a>
+            </div>
+        </div>
+        <div class="footer-social-group">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+</footer>
+
+<script src="scripts/auth-guard.js"></script>
+<script src="scripts/api-service.js"></script>
+<script src="scripts/menu-toggle.js"></script>
+<script src="scripts/treino-player.js"></script> 
+</body>
+</html>
