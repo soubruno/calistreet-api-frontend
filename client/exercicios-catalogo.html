@@ -39,7 +39,39 @@
             
             <section class="page-intro">
                 <h2 class="intro-title">Exercícios</h2>
-                <p class="intro-subtitle">Explore os movimentos de acordo com seu grupo e sub-grupo muscular.</p>
+                <p class="intro-subtitle">
+                    Explore os movimentos de acordo com seu grupo e sub-grupo muscular.
+                </p>
+
+                <!-- 🔍 Barra de filtros -->
+                <div class="search-controls">
+
+                    <!-- Buscar por nome -->
+                    <input
+                        type="text"
+                        id="filterNome"
+                        class="search-input"
+                        placeholder="Buscar exercício pelo nome..."
+                    />
+
+                    <!-- Buscar por equipamento -->
+                    <input
+                        type="text"
+                        id="filterEquipamentos"
+                        class="search-input"
+                        placeholder="Equipamento (barra, argolas, solo...)"
+                    />
+
+                    <!-- Botão aplicar filtros -->
+                    <button
+                        id="applyFilters"
+                        class="btn btn-icon btn-filter"
+                        title="Aplicar filtros"
+                    >
+                        <i class="fas fa-filter"></i>
+                    </button>
+
+                </div>
             </section>
             
             <section class="muscle-group-filters">

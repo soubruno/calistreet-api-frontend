@@ -22,36 +22,98 @@
     margin-bottom: 25px;
 }
 
+/* ------------------------------------------------ */
+/* BARRA DE BUSCA E FILTROS */
+/* ------------------------------------------------ */
+.search-controls {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+/* Inputs de busca */
+.search-input {
+    background-color: #1a1a1a;
+    border: 1px solid #333333;
+    border-radius: 6px;
+    padding: 10px 14px;
+    color: #ffffff;
+    font-size: 0.9rem;
+    min-width: 220px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-input::placeholder {
+    color: #777777;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #1e90ff;
+    box-shadow: 0 0 0 2px rgba(30, 144, 255, 0.2);
+}
+
+/* Botão aplicar filtros */
+.btn-filter {
+    background-color: #1a1a1a;
+    border: 1px solid #333333;
+    color: #ffffff;
+    border-radius: 6px;
+    padding: 10px 14px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-filter:hover {
+    border-color: #1e90ff;
+    color: #1e90ff;
+}
+
+
+/* Grupos musculares */
 .muscle-group-filters {
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
+/* Subgrupos musculares */
 .muscle-subgroup-filters {
     display: flex;
     gap: 10px;
     margin-bottom: 40px;
     border-bottom: 1px solid #333333;
     padding-bottom: 20px;
+    flex-wrap: wrap;
 }
 
-.btn-filter-group, .btn-filter-subgroup {
+/* Botões de filtro */
+.btn-filter-group,
+.btn-filter-subgroup {
     padding: 10px 18px;
     border-radius: 6px;
     background-color: #1a1a1a;
     color: #ffffff;
     border: 1px solid #333333;
-    transition: all 0.2s;
+    transition: all 0.2s ease-in-out;
     font-size: 0.9rem;
     cursor: pointer;
 }
 
-.btn-filter-group.active-blue, .btn-filter-subgroup.active-blue {
+.btn-filter-group:hover,
+.btn-filter-subgroup:hover {
+    border-color: #1e90ff;
+}
+
+.btn-filter-group.active-blue,
+.btn-filter-subgroup.active-blue {
     background-color: #1e90ff;
     border-color: #1e90ff;
 }
 
+/* Botão flutuante */
 .floating-btn {
     position: fixed;
     bottom: 20px;
@@ -71,7 +133,7 @@
     display: grid;
     gap: 30px;
 
-    /* Ajusta automaticamente a quantidade de colunas de acordo com o tamanho disponível */
+    /* Colunas adaptáveis */
     grid-template-columns: repeat(auto-fill, minmax(250px, max-content));
     justify-content: start;
 }
@@ -82,24 +144,23 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
     overflow: hidden;
-
-    /* Use min-height para limitar a altura mínima e evitar cards gigantes */
     min-height: 250px;
     max-height: 250px;
-
-    /* Largura adaptável */
     width: 100%;
     position: relative;
     cursor: pointer;
-
-    /* Transição suave ao redimensionar */
-    transition: all 0.2s ease-in-out;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.exercise-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.6);
+}
+
+/* Placeholder de imagem */
 .card-image-placeholder {
-    height: 100px; /* Altura da área da imagem/ícone */
+    height: 100px;
     background-color: #2c2c2c;
     display: flex;
     justify-content: center;
@@ -108,6 +169,7 @@
     color: #aaaaaa;
 }
 
+/* Conteúdo */
 .card-content {
     padding: 15px;
     flex-grow: 1;
@@ -120,17 +182,18 @@
     margin-bottom: 5px;
 }
 
-/* TRUNCAMENTO DE TEXTO (Descrição limitada) */
+/* Descrição com truncamento */
 .card-description {
     font-size: 0.9rem;
     color: #aaaaaa;
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 4; /* Limita a descrição a 4 linhas */
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
-    text-overflow: ellipsis; /* Adiciona "..." */
+    text-overflow: ellipsis;
 }
 
+/* Botão adicionar */
 .btn-add-to-treino {
     position: absolute;
     top: 10px;
@@ -143,8 +206,14 @@
     font-size: 1.1rem;
     padding: 0;
     border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+.btn-add-to-treino.btn-icon-selected {
+    background-color: #2ecc71;
+}
 
 /* ------------------------------------------------ */
 /* 3. MODAL (Pop-up de Detalhes) */
@@ -188,6 +257,7 @@
     cursor: pointer;
 }
 
+/* Placeholder imagem modal */
 .modal-image-placeholder {
     height: 150px;
     background-color: #2c2c2c;
@@ -200,17 +270,35 @@
     margin-bottom: 10px;
 }
 
-/* Para telas menores, reduz a quantidade de colunas */
+/* ------------------------------------------------ */
+/* 4. RESPONSIVIDADE */
+/* ------------------------------------------------ */
 @media (max-width: 900px) {
     .exercise-grid {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        justify-content: start;
     }
 }
 
 @media (max-width: 600px) {
     .exercise-grid {
         grid-template-columns: 1fr;
-        justify-content: start;
+    }
+
+    .floating-btn {
+        width: calc(100% - 40px);
+        right: 20px;
+        border-radius: 12px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .search-controls {
+        flex-direction: column;
+    }
+
+    .search-input,
+    .btn-filter {
+        width: 100%;
     }
 }
