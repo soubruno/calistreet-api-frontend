@@ -1,0 +1,263 @@
+/* RESET BÁSICO */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* Fundo preto sólido */
+    background-color: #000000; 
+    color: #ffffff; 
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.error-message {
+    color: #ff4444; /* Vermelho forte */
+    background-color: #330000; /* Fundo escuro sutil para destaque */
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* CONTAINER PRINCIPAL E RESPONSIVIDADE */
+.login-container {
+    /* Largura ligeiramente maior para o design ser mais robusto */
+    max-width: 450px; 
+    width: 100%;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+/* CABEÇALHO */
+.login-header {
+    margin-bottom: 50px;
+}
+
+.app-title {
+    font-size: 3.5rem; 
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #aaaaaa;
+}
+
+/* FORMULÁRIO */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Espaçamento maior entre os blocos */
+}
+
+.input-group {
+    text-align: left;
+    /* Remove a margem inferior padrão e usa o gap do formulário */
+    margin-bottom: 0; 
+}
+
+.input-group label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #f0f0f0; /* Cor do rótulo quase branca */
+}
+
+/* INPUTS */
+.input-group input {
+    width: 100%;
+    padding: 15px 12px;
+    border: none;
+    border-radius: 8px; /* Cantos mais suaves */
+    font-size: 1rem;
+    color: #ffffff;
+    /* Fundo dos campos: Cinza muito escuro (próximo ao preto) */
+    background-color: #1a1a1a; 
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.input-group input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #1e90ff; /* Borda azul ao focar */
+}
+
+.input-group input.input-error {
+    border: 2px solid #ff4444 !important; 
+    box-shadow: 0 0 0 2px #ff4444; 
+}
+
+/* LINK ESQUECEU SENHA */
+.forgot-password {
+    display: block;
+    text-align: right;
+    font-size: 0.9rem;
+    color: #1e90ff; 
+    text-decoration: none;
+    margin-top: 8px;
+}
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* BOTÕES */
+.btn {
+    padding: 15px;
+    border: none;
+    border-radius: 8px; 
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: background-color 0.3s, opacity 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra para profundidade */
+}
+
+/* Botão Primário (Entrar) */
+.btn-primary {
+    /* Azul vibrante da imagem */
+    background-color: #1e90ff; 
+    color: #ffffff;
+    margin-top: 15px;
+}
+
+.btn-primary:hover {
+    background-color: #0d71d8;
+}
+
+/* Botão Secundário (Google) */
+.btn-secondary {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #ddd;
+}
+
+.btn-secondary i {
+    margin-right: 10px;
+    font-size: 1.1rem;
+}
+
+.btn-secondary:hover {
+    background-color: #f0f0f0;
+}
+
+/* TEXTO DE OPÇÃO DE REGISTRO */
+.register-link {
+    margin-top: 35px;
+    font-size: 1rem;
+}
+
+.register-link p {
+    color: #aaaaaa;
+    margin-bottom: 5px;
+}
+
+.register-link a {
+    color: #1e90ff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 450px) {
+    .login-container {
+        padding: 15px;
+    }
+    .app-title {
+        font-size: 3rem;
+    }
+    .subtitle {
+        font-size: 1rem;
+    }
+    .btn {
+        font-size: 1rem;
+    }
+}
+
+.selection-grid {
+    display: grid;
+    /* Padrão para 2 colunas para mobile e tablet */
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.btn-selection {
+    height: 120px;
+    background-color: #1a1a1a;
+    border: 1px solid #333333;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #f0f0f0;
+    transition: all 0.3s;
+    font-weight: 500;
+}
+
+.btn-selection i {
+    font-size: 2rem;
+    margin-bottom: 8px;
+    color: #aaaaaa; /* Ícones cinzas por padrão */
+}
+
+/* Estilo para Botão Selecionado (AZUL) */
+.btn-selection.active-blue {
+    background-color: #1e90ff; 
+    border-color: #1e90ff;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.btn-selection.active-blue i {
+    color: #ffffff; /* Ícone branco quando ativo */
+}
+
+/* Ajuste específico para a grid de equipamentos (3 colunas em desktop) */
+.equipment-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+
+
+
+@media (min-width: 768px) {
+    /* Em telas maiores, as grids de equipamento podem ter mais colunas */
+    .equipment-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.input-group input.input-error {
+    /* Define uma borda vermelha para campos não preenchidos */
+    border: 2px solid #ff4444 !important; 
+    /* Remove a sombra azul do foco para não confundir com erro */
+    box-shadow: 0 0 0 2px #ff4444; 
+}
+
+.select-container select.input-error {
+    /* Garante que o input interno do select tenha a borda */
+    border: 1px solid #ff4444; 
+}
