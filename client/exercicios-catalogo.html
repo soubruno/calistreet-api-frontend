@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calistreet - Biblioteca de Exercícios</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/styles.css"> 
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="styles/exercicios.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2 class="app-title">Calistreet</h2>
+            <button class="close-menu" id="close-menu"><i class="fas fa-times"></i></button>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li><a href="perfil.html"><i class="fas fa-user-circle"></i> Meu perfil</a></li>
+            <li><a href="meus-treinos.html"><i class="fas fa-dumbbell"></i> Treinos</a></li>
+            <li><a href="progresso.html"><i class="fas fa-chart-line"></i> Progresso</a></li>
+            <li><a href="exercicios-catalogo.html"><i class="fas fa-list-ul"></i> Exercícios</a></li>
+        </ul>
+    </nav>
+    
+    <div class="main-content" id="main-content">
+
+        <header class="dashboard-header">
+            <button class="menu-icon-static" id="menu-icon-static">
+                <i class="fas fa-bars"></i>
+            </button>
+            <h1 class="welcome-title">Exercícios</h1> 
+            <div class="header-placeholder"></div> 
+        </header>
+
+        <main class="exercicios-body">
+            
+            <section class="page-intro">
+                <h2 class="intro-title">Exercícios</h2>
+                <p class="intro-subtitle">Explore os movimentos de acordo com seu grupo e sub-grupo muscular.</p>
+            </section>
+            
+            <section class="muscle-group-filters">
+                <button class="btn btn-filter-group active-blue" data-group="SUPERIOR">Superior</button>
+                <button class="btn btn-filter-group" data-group="CORE">Core</button>
+                <button class="btn btn-filter-group" data-group="INFERIOR">Inferior</button>
+            </section>
+            
+            <section class="muscle-subgroup-filters" id="subgroup-filters">
+                
+            </section>
+            
+            <section class="exercise-grid">
+                
+                <article class="exercise-card" data-exercicio-id="${exercicio.id}">
+                    <div class="card-image-placeholder">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <div class="card-content" onclick="openExerciseModal(this.closest('.exercise-card'))">
+                        <h3 class="card-title">${exercicio.nome}</h3>
+                        <p class="card-description">
+                            Grupo: ${exercicio.grupoMuscular} | Equip.: ${exercicio.equipamentosNecessarios || 'Nenhum'}
+                        </p>
+                    </div>
+                    <button class="btn btn-icon btn-add-to-treino ${selectedClass}" type="button" data-exercicio-id="${exercicio.id}">
+                        <i class="${iconClass}"></i>
+                    </button>
+                </article>
+                
+                </section>
+
+        </main>
+        
+        <div id="exerciseModal" class="modal hidden">
+            <div class="modal-content">
+                <button class="close-modal"><i class="fas fa-times"></i></button>
+                <h2 id="modal-title">Nome do Exercício</h2>
+                <div id="modal-image" class="modal-image-placeholder"></div>
+                <p id="modal-description">Descrição completa do exercício...</p>
+                <button class="btn btn-primary">Adicionar ao Treino</button>
+            </div>
+        </div>
+
+    </div> 
+    
+        <footer class="main-footer">
+            <div class="footer-content">
+                <div class="footer-branding">
+                    <p class="footer-app-title">Calistreet</p> </div>
+                
+                <div class="footer-links">
+                    <div class="contribution-text-group">
+                        <p class="contribution-text">Contribua para a melhoria do site</p>
+                        <a href="#">Contatos</a>
+                        <a href="#">Doações</a>
+                    </div>
+                </div>
+                
+                <div class="footer-social-group">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </footer>
+
+    <!-- <script src="scripts/fetch-authenticated.js"></script> -->
+    <script src="scripts/auth-guard.js"></script>
+    <script src="scripts/api-service.js"></script>
+    <script src="scripts/menu-toggle.js"></script>
+    <script src="scripts/exercicios-catalogo.js"></script> 
+</body>
+</html>

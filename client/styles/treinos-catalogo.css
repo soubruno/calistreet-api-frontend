@@ -1,0 +1,175 @@
+/* client/styles/treinos-catalogo.css */
+
+/* ------------------------------------------------ */
+/* 1. INTRODUÇÃO DA PÁGINA */
+/* ------------------------------------------------ */
+.page-intro {
+    text-align: left;
+    margin-bottom: 30px;
+    padding-top: 20px;
+    border-bottom: 1px solid #333333;
+    padding-bottom: 15px;
+}
+
+.intro-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.intro-subtitle {
+    font-size: 1rem;
+    color: #aaaaaa;
+}
+
+.search-controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.search-input {
+    flex-grow: 1;
+    padding: 12px;
+    border: 1px solid #333333;
+    border-radius: 8px;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-size: 1rem;
+}
+
+.search-input::placeholder {
+    color: #888888;
+}
+
+.btn-filter {
+    width: 45px;
+    height: 45px;
+    border-radius: 8px;
+    background-color: #1e90ff;
+    color: white;
+    font-size: 1.1rem;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+
+/* ------------------------------------------------ */
+/* 2. LISTA DE TREINOS (CARDS) */
+/* ------------------------------------------------ */
+.treinos-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.treino-card {
+    display: flex;
+    align-items: center;
+    background-color: #1a1a1a;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+.treino-card:hover {
+    transform: translateY(-2px);
+}
+
+/* Icone/Foto do Treino (Lado Esquerdo) */
+.treino-icon {
+    width: 50px;
+    height: 50px;
+    background-color: #000000;
+    color: #1e90ff; 
+    border-radius: 8px;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+/* Informações do Treino */
+.treino-info {
+    flex-grow: 1;
+    min-width: 0; /* Permite que o texto seja truncado se necessário */
+}
+
+.treino-nome {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+    color: #f0f0f0;
+}
+
+.treino-meta {
+    font-size: 0.9rem;
+    color: #aaaaaa;
+}
+
+/* ------------------------------------------------ */
+/* 3. AÇÕES (Visualizar e Excluir) */
+/* ------------------------------------------------ */
+.treino-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.btn-visualizar {
+    /* Botão Primário (Azul) para Visualizar */
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    height: 38px;
+    margin: 0;
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    color: #ff4444; /* Vermelho para Excluir (Lixeira) */
+    font-size: 1.1rem;
+    padding: 10px;
+    cursor: pointer;
+    transition: color 0.2s;
+    width: 38px; 
+    height: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.btn-excluir:hover {
+    color: #d83a3a;
+}
+
+
+/* RESPONSIVIDADE */
+@media (max-width: 550px) {
+    /* Em telas muito pequenas, o botão visualizar pode ser substituído por um ícone */
+    .btn-visualizar {
+        font-size: 0; /* Oculta o texto */
+        width: 40px; 
+        height: 40px; 
+        padding: 0;
+        border-radius: 50%;
+    }
+    .btn-visualizar::after {
+        /* Exibe apenas um ícone de olho */
+        content: '\f06e'; 
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        font-size: 0.9rem;
+    }
+}

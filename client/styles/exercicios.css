@@ -1,0 +1,216 @@
+/* client/styles/exercicios.css */
+
+/* ------------------------------------------------ */
+/* 1. FILTROS E INTRODUÇÃO */
+/* ------------------------------------------------ */
+.exercicios-body {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 30px;
+    padding-bottom: 50px;
+}
+
+.intro-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.intro-subtitle {
+    font-size: 1rem;
+    color: #aaaaaa;
+    margin-bottom: 25px;
+}
+
+.muscle-group-filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.muscle-subgroup-filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #333333;
+    padding-bottom: 20px;
+}
+
+.btn-filter-group, .btn-filter-subgroup {
+    padding: 10px 18px;
+    border-radius: 6px;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border: 1px solid #333333;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.btn-filter-group.active-blue, .btn-filter-subgroup.active-blue {
+    background-color: #1e90ff;
+    border-color: #1e90ff;
+}
+
+.floating-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    z-index: 1000;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* ------------------------------------------------ */
+/* 2. GRID DE EXERCÍCIOS (Cards) */
+/* ------------------------------------------------ */
+.exercise-grid {
+    display: grid;
+    gap: 30px;
+
+    /* Ajusta automaticamente a quantidade de colunas de acordo com o tamanho disponível */
+    grid-template-columns: repeat(auto-fill, minmax(250px, max-content));
+    justify-content: start;
+}
+
+.exercise-card {
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: hidden;
+
+    /* Use min-height para limitar a altura mínima e evitar cards gigantes */
+    min-height: 250px;
+    max-height: 250px;
+
+    /* Largura adaptável */
+    width: 100%;
+    position: relative;
+    cursor: pointer;
+
+    /* Transição suave ao redimensionar */
+    transition: all 0.2s ease-in-out;
+}
+
+.card-image-placeholder {
+    height: 100px; /* Altura da área da imagem/ícone */
+    background-color: #2c2c2c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    color: #aaaaaa;
+}
+
+.card-content {
+    padding: 15px;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+/* TRUNCAMENTO DE TEXTO (Descrição limitada) */
+.card-description {
+    font-size: 0.9rem;
+    color: #aaaaaa;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* Limita a descrição a 4 linhas */
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis; /* Adiciona "..." */
+}
+
+.btn-add-to-treino {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #1e90ff;
+    color: white;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    font-size: 1.1rem;
+    padding: 0;
+    border: none;
+}
+
+
+/* ------------------------------------------------ */
+/* 3. MODAL (Pop-up de Detalhes) */
+/* ------------------------------------------------ */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.modal-image-placeholder {
+    height: 150px;
+    background-color: #2c2c2c;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+#modal-title {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+/* Para telas menores, reduz a quantidade de colunas */
+@media (max-width: 900px) {
+    .exercise-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        justify-content: start;
+    }
+}
+
+@media (max-width: 600px) {
+    .exercise-grid {
+        grid-template-columns: 1fr;
+        justify-content: start;
+    }
+}
