@@ -1,0 +1,143 @@
+/* client/styles/perfil.css */
+
+.perfil-body {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-top: 30px;
+    padding-bottom: 50px;
+}
+
+/* ------------------------------------------------ */
+/* 1. BLOCO DE INFORMAÇÕES DO USUÁRIO */
+/* ------------------------------------------------ */
+.user-info-card {
+    display: flex;
+    position: relative;
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    margin-bottom: 40px;
+    align-items: flex-start;
+}
+
+.profile-picture-placeholder {
+    width: 150px;
+    height: 150px;
+    background-color: #2c2c2c;
+    border-radius: 8px;
+    margin-right: 30px;
+    flex-shrink: 0; /* Impede que encolha */
+    
+    /* Centraliza o ícone (opcional, se não houver imagem) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    color: #aaaaaa;
+}
+
+.profile-details {
+    flex-grow: 1;
+}
+
+.user-name {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.member-since {
+    font-size: 0.9rem;
+    color: #aaaaaa;
+    margin-bottom: 20px;
+}
+
+.user-stats p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+    color: #f0f0f0;
+}
+
+.user-stats strong {
+    color: #1e90ff; /* Destaca o título da informação */
+    font-weight: 600;
+}
+
+.btn-edit-profile {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: #1e90ff;
+    font-size: 1.2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* ------------------------------------------------ */
+/* 2. BLOCO DE CONQUISTAS */
+/* ------------------------------------------------ */
+.conquistas-section h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.conquistas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding-top: 20px;
+}
+
+.conquista-card {
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    height: 100%;
+}
+
+.conquista-icon {
+    font-size: 2.5rem;
+    color: #ffd700; /* Cor de ouro/dourado para conquistas */
+    margin-bottom: 10px;
+}
+
+.conquista-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.conquista-description {
+    font-size: 0.85rem;
+    color: #aaaaaa;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 600px) {
+    .user-info-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .profile-picture-placeholder {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    .profile-details {
+        text-align: center;
+    }
+    .user-stats p {
+        text-align: left; /* Mantém a leitura dos detalhes fácil */
+    }
+    .btn-edit-profile {
+        top: 10px;
+        right: 10px;
+    }
+}
