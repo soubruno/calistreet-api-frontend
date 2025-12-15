@@ -100,7 +100,14 @@ export class ProgressoRepository {
     return this.progressoModel.findAndCountAll({
       where: whereCondition,
       include: [
-        { model: Treino, as: 'treinoModelo', attributes: ['nome'] },
+        {
+          model: Treino,
+          as: 'treinoModelo',
+          attributes: ['nome'],
+          where: queryDto.treinoNome
+            ? { nome: { [Op.iLike]: `%${queryDto.treinoNome}%` } }
+            : undefined,
+        },
       ],
       limit: limit,
       offset: offset,

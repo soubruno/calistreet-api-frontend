@@ -40,7 +40,38 @@
             <section class="page-intro">
                 <h2 class="intro-title">Acompanhe o seu progresso</h2>
                 <p class="intro-subtitle">Histórico de treinos</p>
-                </section>
+            </section>
+
+            <section class="progresso-filtros">
+                <h2>Filtrar histórico</h2>
+
+                <div class="filtros-grid">
+                    <div class="filtro-group">
+                        <label>Nome do treino</label>
+                        <input id="filtro-nome" type="text" placeholder="Ex: Treino A">
+                    </div>
+
+                    <div class="filtro-group">
+                        <label>Data de conclusão</label>
+                        <input id="filtro-data-conclusao" type="date">
+                    </div>
+
+                    <div class="filtro-group">
+                        <label>Status</label>
+                        <select id="filtro-status">
+                            <option value="">Todos</option>
+                            <option value="CONCLUIDO">Concluído</option>
+                            <option value="INTERROMPIDO">Interrompido</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="filtros-actions">
+                    <button id="btn-filtrar" class="btn btn-primary btn-filtrar">
+                        Filtrar
+                    </button>
+                </div>
+            </section>
 
             <section class="treinos-list" id="treinos-list">
                

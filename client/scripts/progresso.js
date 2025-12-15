@@ -6,24 +6,64 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     const treinosList = document.getElementById('treinos-list');
+    const btnFiltrar = document.getElementById('btn-filtrar');
+
+    // Carrega inicialmente sem filtros
+    await carregarProgressos();
+
+    // Clique no botão filtrar
+    if (btnFiltrar) {
+        btnFiltrar.addEventListener('click', async () => {
+            await carregarProgressos();
+        });
+    }
+});
+
+/* ------------------------------------------------ */
+/* Carrega progressos com filtros */
+/* ------------------------------------------------ */
+async function carregarProgressos() {
+    const treinosList = document.getElementById('treinos-list');
+    treinosList.innerHTML = '<p>Carregando...</p>';
 
     try {
-        const response = await fetchAuthenticated('/progresso', 'GET');
+        const query = montarQueryFiltros();
+        const response = await fetchAuthenticated(`/progresso?${query}`, 'GET');
 
         console.log('Resposta da API /progresso:', response);
 
-        // 🔥 Normalização definitiva
         const progressos = normalizarResposta(response);
-
         renderizarProgressos(progressos);
     } catch (error) {
         console.error('Erro ao carregar progresso:', error);
         treinosList.innerHTML = '<p>Erro ao carregar histórico de treinos.</p>';
     }
-});
+}
 
 /* ------------------------------------------------ */
-/* Normaliza o retorno da API (Sequelize / Nest / etc) */
+/* Monta query string a partir dos filtros */
+/* ------------------------------------------------ */
+function montarQueryFiltros() {
+    const nome = document.getElementById('filtro-nome')?.value;
+    const dataConclusao = document.getElementById('filtro-data-conclusao')?.value;
+    const status = document.getElementById('filtro-status')?.value;
+
+    const params = new URLSearchParams();
+
+    if (nome) params.append('treinoNome', nome);
+
+    if (dataConclusao) {
+        params.append('dataMinima', `${dataConclusao}T00:00:00.000Z`);
+        params.append('dataMaxima', `${dataConclusao}T23:59:59.999Z`);
+    }
+
+    if (status) params.append('status', status);
+
+    return params.toString();
+}
+
+/* ------------------------------------------------ */
+/* Normaliza o retorno da API */
 /* ------------------------------------------------ */
 function normalizarResposta(response) {
     if (Array.isArray(response)) return response;
@@ -52,7 +92,7 @@ function renderizarProgressos(progressos) {
     treinosList.innerHTML = '';
 
     if (!progressos || progressos.length === 0) {
-        treinosList.innerHTML = '<p>Nenhum treino concluído ainda.</p>';
+        treinosList.innerHTML = '<p>Nenhum treino encontrado.</p>';
         return;
     }
 
@@ -78,7 +118,12 @@ function renderizarProgressos(progressos) {
             </div>
             <div class="treino-info">
                 <h3 class="treino-nome">${nomeTreino}</h3>
-                <p class="treino-meta">Concluído: ${tempoRelativo}</p>
+                <p class="treino-meta">
+                    Status: ${progresso.status}
+                </p>
+                <p class="treino-meta">
+                    Concluído: ${tempoRelativo}
+                </p>
             </div>
             <div class="treino-actions">
                 <button 

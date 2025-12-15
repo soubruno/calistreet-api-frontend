@@ -11,6 +11,13 @@ export class FindAllProgressoDto extends PaginationQueryDto {
     declare treinoId?: string;
 
     @IsOptional()
+    @ApiProperty({
+    required: false,
+    description: 'Filtro por nome do treino (LIKE)',
+    })
+    declare treinoNome?: string;
+
+    @IsOptional()
     @IsDateString()
     @ApiProperty({ required: false, description: 'Filtra sessões iniciadas após esta data.', example: '2025-09-01' })
     declare dataMinima?: string;
